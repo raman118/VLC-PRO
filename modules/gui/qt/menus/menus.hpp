@@ -96,6 +96,8 @@ public:
 
     static void HelpMenu( qt_intf_t *, QMenu *menu );
 
+    static void OpenMoviesSite( qt_intf_t * );
+
     /* Popups Menus */
     static void PopupMenuStaticEntries( QMenu *menu );
     static void PopupMenuPlaylistEntries( QMenu *menu, qt_intf_t *p_intf );

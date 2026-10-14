@@ -47,6 +47,7 @@ Item {
         QmlMenuBar.SUBTITLE,
         QmlMenuBar.TOOL,
         QmlMenuBar.VIEW,
+        QmlMenuBar.MOVIES,
         QmlMenuBar.HELP
     ]
 
@@ -67,6 +68,11 @@ Item {
     onWidthChanged: _updateContentModel()
 
     function _openMenu(item, index) {
+        if (toolbarModel[index] === QmlMenuBar.MOVIES) {
+            menubar.openMoviesSite()
+            root._menuIndex = -1
+            return
+        }
         menubar.popupMenuEntry(item, toolbarModel[index])
         root._menuIndex = index
     }
@@ -74,7 +80,8 @@ Item {
     function _updateHover(item, index, hovered ) {
         root._countHovered += hovered ? 1 : -1
 
-        if (hovered && menubar.openMenuOnHover) {
+        if (hovered && menubar.openMenuOnHover
+                && toolbarModel[index] !== QmlMenuBar.MOVIES) {
             _openMenu(item, index)
         }
     }
@@ -206,6 +213,7 @@ Item {
         onClicked: menubar.popupExtraActionsMenu(extraActionButton, root._extraActionsModel)
     }
 
+    // TODO: Add the custom Movies button icon from resource path ":/menu/movies.svg" when supplied.
     component MenubarButton: T.MenuItem {
         id: control
 

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0e">
+  <meta name="description" content="Discover films, watch trailers, and explore public domain cinema.">
+  <title>Movies — VLC</title>
+  <link rel="stylesheet" href="styles.css">
+  <script type="module" src="app.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="Movies home"><span class="brand-mark">V</span> MOVIES</a>
+    <nav aria-label="Main navigation"><a class="active" href="#top">Home</a><a href="#public-domain">Public Domain</a></nav>
+    <label class="search-box"><span aria-hidden="true">⌕</span><input id="search" type="search" placeholder="Search movies" autocomplete="off" aria-label="Search movies"></label>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-label="Featured movie">
+      <div class="hero-shade"></div>
+      <div class="hero-content">
+        <p class="eyebrow">FEATURED FILM</p>
+        <h1 id="hero-title">Find your next favorite</h1>
+        <p id="hero-copy" class="hero-copy">Explore what's trending, revisit the classics, and watch trailers.</p>
+        <div class="hero-actions"><button id="hero-details" class="button button-light" type="button">ⓘ &nbsp;More information</button><a class="button button-quiet" href="#trending">Explore movies</a></div>
+      </div>
+      <div class="hero-credit">Metadata and images provided by TMDB</div>
+    </section>
+
+    <div id="notice" class="notice" role="status" hidden></div>
+    <section id="search-results" class="movie-section" hidden><div class="section-heading"><h2>Search results</h2><span id="search-count"></span></div><div class="movie-row" id="search-row"></div></section>
+    <div id="catalogue">
+      <section id="trending" class="movie-section"><div class="section-heading"><h2>Trending</h2><span>This week</span></div><div class="movie-row" id="trending-row"><div class="loading">Loading movies…</div></div></section>
+      <section class="movie-section"><div class="section-heading"><h2>Popular</h2><span>Fan favorites</span></div><div class="movie-row" id="popular-row"><div class="loading">Loading movies…</div></div></section>
+      <section class="movie-section"><div class="section-heading"><h2>Top Rated</h2><span>Highly rated</span></div><div class="movie-row" id="top-rated-row"><div class="loading">Loading movies…</div></div></section>
+      <section id="public-domain" class="movie-section"><div class="section-heading"><h2>Public Domain</h2><span>Watch full films at Internet Archive</span></div><div class="movie-row" id="archive-row"></div></section>
+    </div>
+  </main>
+
+  <footer><p>Movie metadata and images © TMDB. This product uses the TMDB API but is not endorsed or certified by TMDB.</p><p>Public domain films are streamed from Internet Archive. Trailers are embedded from YouTube.</p></footer>
+
+  <dialog id="details" aria-labelledby="details-title">
+    <button id="close-modal" class="modal-close" type="button" aria-label="Close details">×</button>
+    <div class="modal-layout"><div id="player-wrap" class="player-wrap"><div class="player-placeholder">Choose a trailer to play</div></div>
+      <div class="modal-info"><p id="modal-kicker" class="eyebrow"></p><h2 id="details-title"></h2><p id="modal-meta" class="modal-meta"></p><p id="modal-overview"></p><div class="modal-actions"><button id="trailer-button" class="button button-light" type="button">▶ &nbsp;Watch trailer</button><a id="archive-link" class="button button-light" href="#" target="_blank" rel="noopener" hidden>▶ &nbsp;Watch full film</a></div><p class="source-note">Trailers are hosted by YouTube. Full films are available only for the listed public domain titles through Internet Archive.</p></div>
+    </div>
+  </dialog>
+</body>
+</html>

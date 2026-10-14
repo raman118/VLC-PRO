@@ -56,6 +56,8 @@
 
 #include <QMenu>
 #include <QMenuBar>
+#include <QDesktopServices>
+#include <QUrl>
 #include <QAction>
 #include <QActionGroup>
 #include <QSignalMapper>
@@ -568,6 +570,15 @@ void VLCMenuBar::HelpMenu(qt_intf_t *p_intf, QMenu *menu )
     menu->addSeparator();
     addDPStaticEntry( menu, qfut( I_MENU_ABOUT ), ":/menu/info.svg",
             &DialogsProvider::aboutDialog, "Shift+F1", QAction::AboutRole );
+}
+
+void VLCMenuBar::OpenMoviesSite(qt_intf_t *p_intf)
+{
+    char *url = var_InheritString(p_intf, "qt-movies-url");
+    const QUrl moviesUrl = url && *url ? QUrl::fromUserInput(qfu(url))
+                                        : QUrl(QString::fromUtf8(QT_MOVIES_URL_DEFAULT));
+    free(url);
+    QDesktopServices::openUrl(moviesUrl);
 }
 
 /*****************************************************************************

@@ -192,6 +192,7 @@ public:
         SUBTITLE,
         TOOL,
         VIEW,
+        MOVIES,
         HELP
     };
     Q_ENUM(MenuEntry);
@@ -218,6 +219,7 @@ public slots:
     void popupSubtitleMenu( QQuickItem* button );
     void popupToolsMenu( QQuickItem* button );
     void popupViewMenu( QQuickItem* button );
+    void openMoviesSite();
     void popupHelpMenu( QQuickItem* button );
     void popupExtraActionsMenu( QQuickItem* button, const QList<MenuEntry>& extraActions );
 

@@ -360,6 +360,8 @@ QmlMenuBar::QmlMenuBar(QObject *parent)
         return qtr("&Tools");
     case VIEW:
         return qtr("V&iew");
+    case MOVIES:
+        return qtr("&Movies");
     case HELP:
         return qtr("&Help");
     }
@@ -411,12 +413,21 @@ void QmlMenuBar::setupMenuEntry(QMenu* menu, MenuEntry entry)
     case VIEW:
         ViewMenu( p_intf, menu );
         break;
+    case MOVIES:
+        menu->addAction(qtr("Open Movies website"), this, &QmlMenuBar::openMoviesSite);
+        break;
     case HELP:
         HelpMenu( p_intf, menu );
         break;
     default:
         vlc_assert_unreachable();
     };
+}
+
+void QmlMenuBar::openMoviesSite()
+{
+    if (m_ctx)
+        VLCMenuBar::OpenMoviesSite(m_ctx->getIntf());
 }
 
 void QmlMenuBar::popupMenuEntry(QQuickItem* button, MenuEntry entry)
@@ -490,6 +501,11 @@ void QmlMenuBar::popupExtraActionsMenu( QQuickItem* button, const QList<MenuEntr
 {
     popupMenuCommon(button, [this, extraActions](QMenu* menu) {
         for (auto action: extraActions) {
+            if (action == MOVIES) {
+                QAction* moviesAction = menu->addAction(menuEntryTitle(action));
+                connect(moviesAction, &QAction::triggered, this, &QmlMenuBar::openMoviesSite);
+                continue;
+            }
             QMenu* subMenu = menu->addMenu(menuEntryTitle(action));
             setupMenuEntry(subMenu, action);
         }
