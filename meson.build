@@ -1085,7 +1085,7 @@ endif
 
 gen_vlc_about = find_program('buildsystem/gen-vlc-about.py')
 vlc_about = custom_target('vlc_about.h',
-                        input:   ['COPYING', 'THANKS', 'AUTHORS'],
+                        input:   ['COPYING', 'doc/upstream-thanks.txt', 'doc/upstream-authors.txt'],
                         output:  ['vlc_about.h'],
                         install: true,
                         install_dir: plugins_header_path,

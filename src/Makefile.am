@@ -150,7 +150,7 @@ noinst_HEADERS = \
 	../include/vlc_update.h \
 	$(NULL)
 
-../include/vlc_about.h: Makefile.am $(top_srcdir)/COPYING $(top_srcdir)/THANKS $(top_srcdir)/AUTHORS
+../include/vlc_about.h: Makefile.am $(top_srcdir)/COPYING $(top_srcdir)/doc/upstream-thanks.txt $(top_srcdir)/doc/upstream-authors.txt
 	$(AM_V_at)rm -f -- "$@.tmp"
 	$(AM_V_at)$(MKDIR_P) "../include"
 	$(AM_V_GEN)(echo "/* Automatically generated file - DO NOT EDIT */" && \
@@ -159,11 +159,11 @@ noinst_HEADERS = \
 	echo ";" && \
 	echo "static const char psz_thanks[] =" && \
 	sed '/\$$Id:/d;s/"/\\"/g;s/<.*.> //;s/^.*$$/\"&\\n\"/' \
-		"$(top_srcdir)/THANKS" && \
+		"$(top_srcdir)/doc/upstream-thanks.txt" && \
 	echo ";" && \
 	echo "static const char psz_authors[] =" && \
 	sed '/\$$Id:/d;s/"/\\"/g;s/<.*.> //;s/^.*$$/\"&\\n\"/' \
-		"$(top_srcdir)/AUTHORS" && \
+		"$(top_srcdir)/doc/upstream-authors.txt" && \
 	echo ";") >> "$@.tmp"
 	$(AM_V_at)mv -f -- "$@.tmp" "$@"
 

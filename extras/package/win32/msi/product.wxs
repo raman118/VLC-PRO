@@ -122,11 +122,8 @@
                         </Component>
 
                         <Component Id='CompTXT' Guid='7fbd228c-87d8-4e91-85b3-aa65e03c9f1e' Win64="$(var.Win64)">
-                            <File Id='AUTHORS.txt' Name='AUTHORS.txt'  DiskId='1'  Source="$(var.VlcInstallPrefix)AUTHORS.txt"/>
                             <File Id='COPYING.txt' Name='COPYING.txt' DiskId='1'  Source="$(var.VlcInstallPrefix)COPYING.txt"/>
-                            <File Id='NEWS.txt' Name='NEWS.txt' DiskId='1'  Source="$(var.VlcInstallPrefix)NEWS.txt"/>
                             <File Id='README.txt' Name='README.txt' DiskId='1'  Source="$(var.VlcInstallPrefix)README.txt"/>
-                            <File Id='THANKS.txt' Name='THANKS.txt' DiskId='1'  Source="$(var.VlcInstallPrefix)THANKS.txt"/>
                         </Component>
 
                         <Component Id='CompLibvlccore' Guid='efa826fd-0037-4ccd-9573-604fde3b9efa' Win64="$(var.Win64)">
@@ -274,7 +271,6 @@
                 <Shortcut Id="VLCShortcut" Name="$(var.ProductName)" Target="[APPLICATIONFOLDER]vlc.exe" />
                 <!--<Shortcut Id="SkinShortcut" Name="$(var.ProductName) skinned" Target="[APPLICATIONFOLDER]vlc.exe" Arguments="-Iskins" />-->
                 <Shortcut Id="VLCCleanShortcut" Name="Reset $(var.ProductName) preferences and cache files" Target="[APPLICATIONFOLDER]vlc.exe" Arguments="--reset-config --reset-plugins-cache vlc://quit" />
-                <Shortcut Id="NEWSShortcut" Name="Release Notes" Target="[APPLICATIONFOLDER]NEWS.txt" />
                 <util:InternetShortcut Id="WebsiteShortcut" Name="VideoLAN website" Target="https://www.videolan.org/"/>
                 <util:InternetShortcut Id="DocumentationShortcut" Name="Documentation" Target="https://www.videolan.org/doc/"/>
                 <!-- RegistryValue which serves as KeyPath -->

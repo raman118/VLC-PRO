@@ -374,8 +374,6 @@ ${MementoSection} "$(Name_Section02a)" SEC02a
     "$INSTDIR\vlc.exe" "-Iskins"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_PUBLISHER}\Documentation.lnk" \
     "$INSTDIR\Documentation.url"
-  CreateShortCut "$SMPROGRAMS\${PRODUCT_PUBLISHER}\Release Notes.lnk" \
-    "$INSTDIR\NEWS.txt" ""
   CreateShortCut "$SMPROGRAMS\${PRODUCT_PUBLISHER}\${PRODUCT_GROUP} Website.lnk" \
     "$INSTDIR\${PRODUCT_GROUP} Website.url"
   CreateShortCut "$SMPROGRAMS\${PRODUCT_PUBLISHER}\${PRODUCT_NAME} - reset preferences and cache files.lnk" \

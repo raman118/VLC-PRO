@@ -8,8 +8,6 @@ Release HOWTO
  * Changes on the git repository
    - Check that the version number everywhere it's needed
      · configure.ac
-     · NEWS
-   - Update important things and add them to the NEWS file
    - Close the milestone on Trac https://trac.videolan.org/vlc
    - Update OpenPGP key embedded in include/vlc_pgpkey.h if needed
    - Increase the libvlccore and libvlc revisions in src/Makefile.am

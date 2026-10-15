@@ -82,11 +82,11 @@ sed -f temp_translators/generated_com temp_translators/start_without_backslash_n
 # Now, we are going to mark the already mentioned translators..
 # Some names are written in CAPITALS. A modified marking script would be good.
 
-sed -n  '/Localization/,/^$/ p' <AUTHORS | sed -n '3,$ s/\(.*\) --* .*/\1/p' >temp_translators/localization_part.txt
-#sed -n '/Localization/,/^$/ p' <AUTHORS | sed -n '3,$ s/\(.*\) - .*/\1/p' >temp_translators/sect.txt
+sed -n  '/Localization/,/^$/ p' <doc/upstream-authors.txt | sed -n '3,$ s/\(.*\) --* .*/\1/p' >temp_translators/localization_part.txt
+#sed -n '/Localization/,/^$/ p' <doc/upstream-authors.txt | sed -n '3,$ s/\(.*\) - .*/\1/p' >temp_translators/sect.txt
 #The second line is what we want. I added -* to have "Éric Lassauge  -- French" included, too. But I really think this is a typo in AUTHORS
 
-sed -n  '/Programming/,/^$/ p' <AUTHORS | sed  -n '3,$ p' >temp_translators/pro_part.txt
+sed -n  '/Programming/,/^$/ p' <doc/upstream-authors.txt | sed  -n '3,$ p' >temp_translators/pro_part.txt
 sed 's:.*:s^&^YYY-- & --YYY^g:' < temp_translators/pro_part.txt > temp_translators/replace_prog_names
 
 
@@ -115,7 +115,7 @@ sed -f temp_translators/replacenames <temp_translators/results.txt |sed -f temp_
 echo "Now temp_translators/review.txt should be reviewed. I don't think this can be done automatically, so I have done it already (not on your computer). Feedback is appreciated."
 echo "XXX are named translators, YYY are named programmers, ZZZ commited with git"
 
-# temp_translators/review.txt has to be reviewed manually. I don't think you would simply remove the names from AUTHORS found because then you would
+# temp_translators/review.txt has to be reviewed manually. I don't think you would simply remove the names from doc/upstream-authors.txt found because then you would
 # see an email adress and would not know, if it has to be added or how (with what name).
 # The simpler to handle git commiter check script gives better names and dates, but of course not for all contributors. However, cross checking is recommended.
 

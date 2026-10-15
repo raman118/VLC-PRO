@@ -14,7 +14,7 @@ OLD_AUTHORS="AUTHORS_unmodified_by_No_se_script.txt"
 if [ -f $OLD_AUTHORS ]; then
  echo "Starting with credits from $OLD_AUTHORS ..."
 else
- echo "You need an old AUTHORS file. Only if you know what you are doing, you can use the current AUTHORS."
+ echo "You need an old AUTHORS file. Only if you know what you are doing, you can use doc/upstream-authors.txt."
  echo "Aborting..."
  exit
 fi
@@ -171,7 +171,7 @@ echo
 echo "For the lazy ones: Have a look at temp_update_AUTHORS/final.txt"
 echo "Contains all git code commiters (the translators are stored somewhere else) sorted by commits, and the pre-git commiters"
 echo
-echo 'For the lazy and brave (stupid?) ones: "cp new_AUTHORS AUTHORS" and check "git diff AUTHORS"'
+echo 'For the lazy and brave (stupid?) ones: review doc/upstream-authors.txt after updating it.'
 
 echo "Programming" >  temp_update_AUTHORS/final.txt
 echo "-----------" >> temp_update_AUTHORS/final.txt
@@ -204,10 +204,10 @@ echo "If something was listed here you should probably modify .mailmap"
 
 
 
-sed -n '1,2  p' < AUTHORS   > temp_update_AUTHORS/new_AUTHORS
+sed -n '1,2  p' < doc/upstream-authors.txt   > temp_update_AUTHORS/new_AUTHORS
 cat temp_update_AUTHORS/final.txt >> temp_update_AUTHORS/new_AUTHORS
 echo >>temp_update_AUTHORS/new_AUTHORS
-sed -n '/Artwork/,$ p' < AUTHORS >> temp_update_AUTHORS/new_AUTHORS
+sed -n '/Artwork/,$ p' < doc/upstream-authors.txt >> temp_update_AUTHORS/new_AUTHORS
 
-cp temp_update_AUTHORS/new_AUTHORS .
+cp temp_update_AUTHORS/new_AUTHORS doc/upstream-authors.txt
 #rm -rf temp_update_AUTHORS/

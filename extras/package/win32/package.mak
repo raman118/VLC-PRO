@@ -57,11 +57,8 @@ if ENABLE_PDB
 	done
 endif
 
-# Text files, clean them from mail addresses
-	for file in AUTHORS THANKS ; \
-		do sed 's/@/_AT_/' < "$(srcdir)/$$file" > "$(win32_destdir)/$${file}.txt"; \
-	done
-	for file in NEWS COPYING; \
+# Text files
+	for file in COPYING; \
 		do cp "$(srcdir)/$$file" "$(win32_destdir)/$${file}.txt"; \
 	done
 	cp "$(srcdir)/README.md" "$(win32_destdir)/README.txt"

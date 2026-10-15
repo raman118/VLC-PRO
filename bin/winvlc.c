@@ -7,7 +7,7 @@
  *          Samuel Hocevar <sam@zoy.org>
  *          Gildas Bazin <gbazin@videolan.org>
  *          Derk-Jan Hartman <hartman at videolan dot org>
- *          Lots of other people, see the libvlc AUTHORS file
+ *          Lots of other people, see doc/upstream-authors.txt
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by

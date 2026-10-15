@@ -1155,7 +1155,7 @@ VLC_API const char * VLC_Compiler( void ) VLC_USED;
   _("This program comes with NO WARRANTY, to the extent permitted by " \
     "law.\nYou may redistribute it under the terms of the GNU General " \
     "Public License;\nsee the file named COPYING for details.\n" \
-    "Written by the VideoLAN team; see the AUTHORS file.\n")
+    "Written by the VideoLAN team and VLC contributors.\n")
 
 #if defined(__cplusplus) || defined(_MSC_VER)
 #define ARRAY_STATIC_SIZE
