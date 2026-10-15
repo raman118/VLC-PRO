@@ -150,21 +150,15 @@ noinst_HEADERS = \
 	../include/vlc_update.h \
 	$(NULL)
 
-../include/vlc_about.h: Makefile.am $(top_srcdir)/COPYING $(top_srcdir)/doc/upstream-thanks.txt $(top_srcdir)/doc/upstream-authors.txt
+../include/vlc_about.h: Makefile.am $(top_srcdir)/COPYING
 	$(AM_V_at)rm -f -- "$@.tmp"
 	$(AM_V_at)$(MKDIR_P) "../include"
 	$(AM_V_GEN)(echo "/* Automatically generated file - DO NOT EDIT */" && \
 	echo "static const char psz_license[] =" && \
 	sed 's/"/\\"/g;s/^.*$$/\"&\\n\"/' "$(top_srcdir)/COPYING" && \
 	echo ";" && \
-	echo "static const char psz_thanks[] =" && \
-	sed '/\$$Id:/d;s/"/\\"/g;s/<.*.> //;s/^.*$$/\"&\\n\"/' \
-		"$(top_srcdir)/doc/upstream-thanks.txt" && \
-	echo ";" && \
-	echo "static const char psz_authors[] =" && \
-	sed '/\$$Id:/d;s/"/\\"/g;s/<.*.> //;s/^.*$$/\"&\\n\"/' \
-		"$(top_srcdir)/doc/upstream-authors.txt" && \
-	echo ";") >> "$@.tmp"
+	echo 'static const char psz_thanks[] = "";' && \
+	echo 'static const char psz_authors[] = "";') >> "$@.tmp"
 	$(AM_V_at)mv -f -- "$@.tmp" "$@"
 
 ###############################################################################

@@ -1085,14 +1085,12 @@ endif
 
 gen_vlc_about = find_program('buildsystem/gen-vlc-about.py')
 vlc_about = custom_target('vlc_about.h',
-                        input:   ['COPYING', 'doc/upstream-thanks.txt', 'doc/upstream-authors.txt'],
+                        input:   ['COPYING'],
                         output:  ['vlc_about.h'],
                         install: true,
                         install_dir: plugins_header_path,
                         command: [gen_vlc_about,
                                    '@INPUT0@',
-                                   '@INPUT1@',
-                                   '@INPUT2@',
                                    '@OUTPUT@'])
 
 # Enable stream outputs

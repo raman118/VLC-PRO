@@ -20,7 +20,7 @@ Follow [INSTALL.md](INSTALL.md) for the build requirements and instructions. VLC
 
 ## Upstream source and license
 
-The player code is based on VLC media player, developed by the VideoLAN community and VLC contributors. Existing source copyright notices and author credits are retained. VLC is distributed under GPL-2.0-or-later; libVLC uses LGPL-2.0-or-later. See [COPYING](COPYING), [COPYING.LIB](COPYING.LIB), and the notices in individual source files.
+The player code is based on VLC media player, developed by the VideoLAN community. Source copyright notices and license information remain with the relevant code. VLC is distributed under GPL-2.0-or-later; libVLC uses LGPL-2.0-or-later. See [COPYING](COPYING), [COPYING.LIB](COPYING.LIB), and the notices in individual source files.
 
 VLC-PRO-specific changes are recorded in this repository's Git history. VLC-PRO is an independent fork and is not an official VideoLAN release.
 

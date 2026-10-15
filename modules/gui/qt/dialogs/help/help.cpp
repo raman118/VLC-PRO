@@ -95,7 +95,7 @@ AboutDialog::AboutDialog( qt_intf_t *_p_intf)
     ui.title->setText("<html><head/><body><p><span style=\" font-size:26pt; color:#353535;\"> " + qtr( "VLC-PRO" ) + " </span></p></body></html>");
 
     ui.MainBlabla->setText("<html><head/><body>" +
-    qtr( "<p>VLC-PRO is a customized community fork of VLC media player, based on software created by the <a href=\"https://www.videolan.org/\"><span style=\" text-decoration: underline; color:#0057ae;\">VideoLAN</span></a> community and VLC contributors.</p><p>This fork adds a customized interface with shortcuts to two configurable movie websites. The underlying player retains VLC's media playback, conversion, and streaming capabilities.</p><p>See the VLC and VideoLAN credits in the Authors and Credits sections.</p>" ) +
+    qtr( "<p>VLC-PRO is a customized fork of VLC media player, based on the <a href=\"https://www.videolan.org/\"><span style=\" text-decoration: underline; color:#0057ae;\">VideoLAN</span></a> project.</p><p>This fork adds a customized interface with shortcuts to two configurable movie websites. The underlying player retains VLC's media playback, conversion, and streaming capabilities.</p><p>Source copyright notices and license information are included with the software.</p>" ) +
     "</body></html>");
 
     const QDate today = QDate::currentDate();
@@ -117,11 +117,10 @@ AboutDialog::AboutDialog( qt_intf_t *_p_intf)
     ui.licenseButton->setText( "<html><head/><body><p><span style=\" text-decoration: underline; color:#0057ae;\">"+qtr( "License" )+"</span></p></body></html>");
     ui.licenseButton->installEventFilter( this );
 
-    ui.authorsButton->setText( "<html><head/><body><p><span style=\" text-decoration: underline; color:#0057ae;\">"+qtr( "Authors" )+"</span></p></body></html>");
-    ui.authorsButton->installEventFilter( this );
-
-    ui.creditsButton->setText( "<html><head/><body><p><span style=\" text-decoration: underline; color:#0057ae;\">"+qtr( "Credits" )+"</span></p></body></html>");
-    ui.creditsButton->installEventFilter( this );
+    ui.authorsButton->hide();
+    ui.creditsButton->hide();
+    ui.authorsPage->hide();
+    ui.creditPage->hide();
 
     ui.version->installEventFilter( this );
 }
