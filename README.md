@@ -1,5 +1,11 @@
 # VLC-PRO
 
+<p align="center">
+  <img src="assets/pirate-47705.png" alt="Pirate skull and crossbones flag" width="360">
+</p>
+
+Image: [Clker-Free-Vector-Images on Pixabay](https://pixabay.com/vectors/pirate-skull-crossed-bones-47705/).
+
 VLC-PRO is a customized fork of VLC media player. It keeps VLC's media playback engine and adds a Qt interface with two configurable movie website shortcuts, plus a separate movie discovery site in `movies-site/`.
 
 ## VLC-PRO additions
