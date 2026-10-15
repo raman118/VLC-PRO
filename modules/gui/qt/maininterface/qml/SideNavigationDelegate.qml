@@ -68,6 +68,7 @@ T.ItemDelegate {
             "video": "videoNavBar",
             "music": "musicNavBar",
             "network": "browseNavBar",
+            "movies": "moviesNavBar",
             "discover": "discoverNavBar"
         }
         const id = navBarIds[model.uri[0]]

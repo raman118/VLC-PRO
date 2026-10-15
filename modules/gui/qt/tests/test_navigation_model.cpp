@@ -172,31 +172,33 @@ private slots:
     void testInitialValues() {
         initWithMedialib(true);
         //all is collapsed
-        QCOMPARE(m_model->rowCount(), 5);
+        QCOMPARE(m_model->rowCount(), 6);
         int i = 0;
         COMPARE_ROW(i++, "Home", Leaf);
         COMPARE_ROW(i++, "Video", Closed);
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
     void testInitialValuesNoML() {
         initWithMedialib(false);
         //all is collapsed
-        QCOMPARE(m_model->rowCount(), 3);
+        QCOMPARE(m_model->rowCount(), 4);
         int i = 0;
         COMPARE_ROW(i++, "Home", Leaf);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
     void testExpandOOB() {
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
-        QCOMPARE(m_model->rowCount(), 7);
-        QVERIFY(!m_model->setData(m_model->index(7), true, NavigationModel::EXPANDED));
-        QVERIFY(!m_model->setData(m_model->index(7), false, NavigationModel::EXPANDED));
+        QCOMPARE(m_model->rowCount(), 8);
+        QVERIFY(!m_model->setData(m_model->index(8), true, NavigationModel::EXPANDED));
+        QVERIFY(!m_model->setData(m_model->index(8), false, NavigationModel::EXPANDED));
     }
 
     void testExpandExpandedOOB() {
@@ -209,7 +211,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2,3);
         VERIFY_NOT_REMOVED;
 
@@ -222,6 +224,7 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -230,7 +233,7 @@ private slots:
         initWithMedialib(true);
         //expand video
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
 
         QStringList homeUri = {"home"};
         QCOMPARE(
@@ -257,7 +260,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(2), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 10);
+        QCOMPARE(m_model->rowCount(), 11);
         VERIFY_INSERTED(3, 7);
         VERIFY_NOT_REMOVED;
 
@@ -273,6 +276,7 @@ private slots:
             COMPARE_ROW(i++, "Playlists", Leaf);
         }
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -280,7 +284,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(2), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 10);
+        QCOMPARE(m_model->rowCount(), 11);
         VERIFY_INSERTED(3, 7);
         VERIFY_NOT_REMOVED;
 
@@ -296,11 +300,12 @@ private slots:
             COMPARE_ROW(i++, "Playlists", Leaf);
         }
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(m_model->setData(m_model->index(2), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 10);
+        QCOMPARE(m_model->rowCount(), 11);
         VERIFY_NOT_INSERTED;
         VERIFY_NOT_REMOVED;
 
@@ -316,6 +321,7 @@ private slots:
             COMPARE_ROW(i++, "Playlists", Leaf);
         }
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -323,7 +329,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(3), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 5);
+        QCOMPARE(m_model->rowCount(), 6);
         VERIFY_NOT_INSERTED;
         VERIFY_NOT_REMOVED;
 
@@ -332,6 +338,7 @@ private slots:
         COMPARE_ROW(i++, "Video", Closed);
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -339,7 +346,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(3), false, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 5);
+        QCOMPARE(m_model->rowCount(), 6);
         VERIFY_NOT_INSERTED;
         VERIFY_NOT_REMOVED;
 
@@ -348,6 +355,7 @@ private slots:
         COMPARE_ROW(i++, "Video", Closed);
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -355,7 +363,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2, 3);
         VERIFY_NOT_REMOVED;
 
@@ -368,11 +376,12 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(m_model->setData(m_model->index(1), false, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 5);
+        QCOMPARE(m_model->rowCount(), 6);
         VERIFY_REMOVED(2, 3);
         VERIFY_NOT_INSERTED;
 
@@ -381,6 +390,7 @@ private slots:
         COMPARE_ROW(i++, "Video", Closed);
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -388,7 +398,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2, 3);
         VERIFY_NOT_REMOVED;
 
@@ -401,11 +411,12 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(!m_model->setData(m_model->index(8), false, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_NOT_INSERTED;
         VERIFY_NOT_REMOVED;
 
@@ -418,6 +429,7 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -426,7 +438,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2,3);
         VERIFY_NOT_REMOVED;
 
@@ -439,11 +451,12 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(m_model->setData(m_model->index(4), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 10);
+        QCOMPARE(m_model->rowCount(), 11);
         VERIFY_REMOVED(2, 3);
         VERIFY_INSERTED(3, 7);
 
@@ -459,6 +472,7 @@ private slots:
             COMPARE_ROW(i++, "Playlists", Leaf);
         }
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -466,7 +480,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2, 3);
         VERIFY_NOT_REMOVED;
 
@@ -479,11 +493,12 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(m_model->setData(m_model->index(4), false, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_NOT_INSERTED;
         VERIFY_NOT_REMOVED;
 
@@ -496,6 +511,7 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 
@@ -503,7 +519,7 @@ private slots:
         initWithMedialib(true);
         QVERIFY(m_model->setData(m_model->index(1), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 7);
+        QCOMPARE(m_model->rowCount(), 8);
         VERIFY_INSERTED(2, 3);
         VERIFY_NOT_REMOVED;
 
@@ -516,11 +532,12 @@ private slots:
         }
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
 
         QVERIFY(m_model->setData(m_model->index(0), true, NavigationModel::EXPANDED));
 
-        QCOMPARE(m_model->rowCount(), 5);
+        QCOMPARE(m_model->rowCount(), 6);
         VERIFY_NOT_INSERTED;
         VERIFY_REMOVED(2, 3);
 
@@ -529,6 +546,7 @@ private slots:
         COMPARE_ROW(i++, "Video", Closed);
         COMPARE_ROW(i++, "Music", Closed);
         COMPARE_ROW(i++, "Browse", Leaf);
+        COMPARE_ROW(i++, "Movies", Leaf);
         COMPARE_ROW(i++, "Discover", Closed);
     }
 

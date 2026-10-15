@@ -16,7 +16,7 @@ qt6_dep = dependency('qt6',
     version: '>=6.2',
     modules: [
         'Core', 'Gui', 'Widgets', 'Qml',
-        'Quick', 'QuickControls2'
+        'Quick', 'QuickControls2', 'WebEngineQuick'
         ],
     private_headers: true,
     required: get_option('qt'))

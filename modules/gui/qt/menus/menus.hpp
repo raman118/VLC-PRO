@@ -30,6 +30,7 @@
 #include "widgets/native/qvlcframe.hpp"
 
 #include <QObject>
+#include <QUrl>
 
 class VLCMenu : public QMenu
 {
@@ -97,6 +98,8 @@ public:
     static void HelpMenu( qt_intf_t *, QMenu *menu );
 
     static void OpenMoviesSite( qt_intf_t * );
+    static void OpenMoviesSite( qt_intf_t *, int site );
+    static QUrl MoviesSiteUrl( qt_intf_t *, int site );
 
     /* Popups Menus */
     static void PopupMenuStaticEntries( QMenu *menu );

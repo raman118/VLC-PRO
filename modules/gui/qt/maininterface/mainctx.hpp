@@ -30,6 +30,7 @@
 #include <QApplication>
 #include <QQuickItem>
 #include <QTimer>
+#include <QUrl>
 
 Q_MOC_INCLUDE( "dialogs/toolbar/controlbar_profile_model.hpp" )
 Q_MOC_INCLUDE( "util/csdbuttonmodel.hpp" )
@@ -411,6 +412,9 @@ public:
     Q_INVOKABLE QUrl folderMRL(const QUrl &fileMRL) const;
 
     Q_INVOKABLE QString displayMRL(const QUrl &mrl) const;
+
+    Q_INVOKABLE void openMoviesSite(int site);
+    Q_INVOKABLE QUrl moviesSiteUrl(int site) const;
 
     double artistAlbumsWidth() const;
     void setArtistAlbumsWidth(double newArtistAlbumsWidth);

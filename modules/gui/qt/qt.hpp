@@ -48,7 +48,8 @@ static_assert(QT_VERSION >= QT_VERSION_CHECK(6, 8, 3), "With static Qt, the Qt v
 
 #include <QString>
 
-inline constexpr char QT_MOVIES_URL_DEFAULT[] = "https://example.com";
+inline constexpr char QT_MOVIES_URL_DEFAULT[] = "https://nightflix.vg/";
+inline constexpr char QT_MOVIES_ALT_URL_DEFAULT[] = "https://cinehd.vc/home";
 
 enum {
     IMEventTypeOffset     = 0,

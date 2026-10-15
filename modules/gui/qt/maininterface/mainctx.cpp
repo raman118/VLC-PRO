@@ -89,6 +89,16 @@
 
 using  namespace vlc::playlist;
 
+void MainCtx::openMoviesSite(int site)
+{
+    VLCMenuBar::OpenMoviesSite(p_intf, site);
+}
+
+QUrl MainCtx::moviesSiteUrl(int site) const
+{
+    return VLCMenuBar::MoviesSiteUrl(p_intf, site);
+}
+
 // #define DEBUG_INTF
 
 /* Callback prototypes */

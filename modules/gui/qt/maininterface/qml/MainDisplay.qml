@@ -16,7 +16,9 @@
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 import QtQuick
+import QtQuick.Controls as Controls
 import QtQuick.Layouts
+import QtWebEngine
 
 import VLC.Style
 import VLC.MainInterface
@@ -29,6 +31,73 @@ import VLC.Dialogs
 
 FocusScope {
     id: g_mainDisplay
+
+    Controls.Menu {
+        id: moviesMenu
+
+        Controls.MenuItem {
+            text: qsTr("Nightflix")
+            onTriggered: {
+                g_mainDisplay.moviesPageUrl = MainCtx.moviesSiteUrl(0)
+                g_mainDisplay.moviesPageVisible = true
+            }
+        }
+
+        Controls.MenuItem {
+            text: qsTr("CineHD")
+            onTriggered: {
+                g_mainDisplay.moviesPageUrl = MainCtx.moviesSiteUrl(1)
+                g_mainDisplay.moviesPageVisible = true
+            }
+        }
+    }
+
+    property bool moviesPageVisible: false
+    property url moviesPageUrl
+
+    Rectangle {
+        anchors.fill: parent
+        color: "black"
+        visible: g_mainDisplay.moviesPageVisible
+        z: 100
+
+        ColumnLayout {
+            anchors.fill: parent
+            spacing: 0
+
+            RowLayout {
+                Layout.fillWidth: true
+
+                Controls.Button {
+                    text: qsTr("Back")
+                    enabled: moviesWebView.canGoBack
+                    onClicked: moviesWebView.goBack()
+                }
+
+                Controls.Label {
+                    Layout.fillWidth: true
+                    text: moviesWebView.title
+                    elide: Text.ElideRight
+                }
+
+                Controls.Button {
+                    text: qsTr("Close")
+                    onClicked: {
+                        g_mainDisplay.moviesPageVisible = false
+                        g_mainDisplay.moviesPageUrl = "about:blank"
+                    }
+                }
+            }
+
+            WebEngineView {
+                id: moviesWebView
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                url: g_mainDisplay.moviesPageUrl
+                onNewWindowRequested: request.openIn(moviesWebView)
+            }
+        }
+    }
 
     Accessible.role: Accessible.Pane
     Accessible.name: qsTr("Main display")
@@ -604,6 +673,12 @@ FocusScope {
                 console.assert(modelUri)
 
                 console.assert(item)
+                if (modelUri.length && modelUri[0] === "movies") {
+                    const menuPos = item.mapToItem(g_mainDisplay, item.width, item.height / 2)
+                    moviesMenu.popup(menuPos.x, menuPos.y)
+                    return
+                }
+
                 if ((sidebar.state !== 'expanded') && item.expandable) {
                     // TODO: Investigate opening the menu on hover, if
                     //       we switch to `Popup.Item` type of menus.

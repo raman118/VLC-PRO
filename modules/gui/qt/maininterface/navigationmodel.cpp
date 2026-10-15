@@ -285,6 +285,10 @@ public:
 
         m_model.children.emplace_back(qtr("Browse"), "network", VLCIcons::topbar_network, QStringLiteral(":/icons/ic_fluent_wifi_1.svg"));
 
+        // TODO: Replace this placeholder with the custom Movies icon at ":/menu/movies.svg".
+        m_model.children.emplace_back(qtr("Movies"), "movies", VLCIcons::topbar_video,
+                                      QStringLiteral(":/icons/ic_fluent_filmstrip.svg"));
+
         ModelEntry discoverEntry{ qtr("Discover"), "discover", VLCIcons::topbar_discover, QStringLiteral(":/icons/ic_fluent_globe.svg") };
         discoverEntry.children.emplace_back(qtr("Services"), "services");
 

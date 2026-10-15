@@ -574,11 +574,23 @@ void VLCMenuBar::HelpMenu(qt_intf_t *p_intf, QMenu *menu )
 
 void VLCMenuBar::OpenMoviesSite(qt_intf_t *p_intf)
 {
-    char *url = var_InheritString(p_intf, "qt-movies-url");
+    OpenMoviesSite(p_intf, 0);
+}
+
+void VLCMenuBar::OpenMoviesSite(qt_intf_t *p_intf, int site)
+{
+    QDesktopServices::openUrl(MoviesSiteUrl(p_intf, site));
+}
+
+QUrl VLCMenuBar::MoviesSiteUrl(qt_intf_t *p_intf, int site)
+{
+    const bool alternateSite = site == 1;
+    char *url = var_InheritString(p_intf, alternateSite ? "qt-movies-alt-url" : "qt-movies-url");
+    const char *defaultUrl = alternateSite ? QT_MOVIES_ALT_URL_DEFAULT : QT_MOVIES_URL_DEFAULT;
     const QUrl moviesUrl = url && *url ? QUrl::fromUserInput(qfu(url))
-                                        : QUrl(QString::fromUtf8(QT_MOVIES_URL_DEFAULT));
+                                       : QUrl(QString::fromUtf8(defaultUrl));
     free(url);
-    QDesktopServices::openUrl(moviesUrl);
+    return moviesUrl;
 }
 
 /*****************************************************************************

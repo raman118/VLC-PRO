@@ -158,6 +158,8 @@ static void ShowDialog   ( intf_thread_t *, int, int, intf_dialog_args_t * );
 
 #define MOVIES_URL_TEXT N_( "Movies website URL" )
 #define MOVIES_URL_LONGTEXT N_( "URL opened by the Movies menu entry." )
+#define MOVIES_ALT_URL_TEXT N_( "Alternate Movies website URL" )
+#define MOVIES_ALT_URL_LONGTEXT N_( "URL opened by the alternate Movies website entry." )
 
 #define KEEPSIZE_TEXT N_( "Resize interface to the native video size" )
 #define KEEPSIZE_LONGTEXT N_( "You have two choices:\n" \
@@ -360,6 +362,8 @@ vlc_module_begin ()
 
     add_string( "qt-movies-url", QT_MOVIES_URL_DEFAULT,
                 MOVIES_URL_TEXT, MOVIES_URL_LONGTEXT )
+    add_string( "qt-movies-alt-url", QT_MOVIES_ALT_URL_DEFAULT,
+                MOVIES_ALT_URL_TEXT, MOVIES_ALT_URL_LONGTEXT )
 
     add_bool( "qt-minimal-view", false, QT_MINIMAL_MODE_TEXT,
               nullptr )
