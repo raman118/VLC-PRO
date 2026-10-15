@@ -1,6 +1,6 @@
-# VLC Movies
+# VLC-PRO Movies
 
-A static movie discovery site with no build step. TMDB supplies movie metadata and posters; trailers play through YouTube embeds. The Public Domain row links to Internet Archive copies of classic films.
+The custom movie discovery site included with VLC-PRO. It is a static site with no build step. TMDB supplies movie metadata and posters; trailers play through YouTube embeds. The Public Domain row links to Internet Archive copies of classic films.
 
 ## Configure TMDB
 
@@ -26,4 +26,4 @@ Open <http://localhost:8000>. Opening `index.html` as a file may prevent the bro
 - **Vercel:** configure `movies-site` as the project root and upload `config.json` with the deployment.
 - **GitHub Pages:** publish the `movies-site` folder using a Pages workflow that creates `config.json` from a repository Actions secret. The generated file is public in the deployed site.
 
-Change the VLC menu destination with VLC's `qt-movies-url` preference after deploying the site.
+After deploying the site, set VLC-PRO's `qt-movies-url` preference to its address if you want to open it from the player.

@@ -5,28 +5,27 @@
     <id>org.videolan.vlc</id>
     <launchable type="desktop-id">vlc.desktop</launchable>
     <metadata_license>CC0-1.0</metadata_license>
-    <name>VLC</name>
-    <summary>VLC media player, the open-source multimedia player</summary>
+    <name>VLC-PRO</name>
+    <summary>VLC-PRO media player, based on VLC</summary>
     <description>
         <p>
-            VLC is a free and open source cross-platform multimedia player and
-            framework that plays most multimedia files as well as DVDs, Audio CDs,
-            VCDs, and various streaming protocols.
+            VLC-PRO is a customized fork of VLC, a free and open source
+            cross-platform multimedia player and framework. It plays most
+            multimedia files as well as DVDs, Audio CDs, VCDs, and streams.
+            This fork adds two configurable movie website shortcuts.
         </p>
     </description>
-    <url type="homepage">https://www.videolan.org/vlc/</url>
-    <url type="bugtracker">https://trac.videolan.org/vlc/</url>
-    <url type="donation">https://www.videolan.org/contribute.html</url>
+    <url type="homepage">https://github.com/raman118/VLC-PRO</url>
+    <url type="bugtracker">https://github.com/raman118/VLC-PRO/issues</url>
     <releases>
         <release version="@VERSION@" date="@VERSION_DATE@" />
     </releases>
     <provides>
         <library>libvlc.so.@LIBVLC_ABI_MAJOR@</library>
     </provides>
-    <project_group>VideoLAN</project_group>
+    <project_group>VLC-PRO</project_group>
     <project_license>GPL-2.0+</project_license>
-    <developer_name>VideoLAN et al.</developer_name>
-    <update_contact>vlc-devel -- videolan.org</update_contact>
+    <developer_name>VLC-PRO contributors</developer_name>
     <screenshots>
         <screenshot type="default">
             <image>https://images.videolan.org/vlc/screenshots/2.0.0/vlc-2.0-poney.jpg</image>
